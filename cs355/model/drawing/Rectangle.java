@@ -3,8 +3,6 @@ package cs355.model.drawing;
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
-import sun.org.mozilla.javascript.ObjToIntMap;
-
 /**
  * Add your rectangle code here. You can add fields, but you cannot
  * change the ones that already exist. This includes the names!

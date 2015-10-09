@@ -92,6 +92,7 @@ public class Controller implements CS355Controller {
 					activeShape = null;
 					actShapeIndex = -1;
 					GUIFunctions.changeSelectedColor(selectedColor);
+					view.update(null, new Object());
 				}
 				view.update(null, activeShape);
 			}
@@ -493,6 +494,9 @@ public class Controller implements CS355Controller {
 	public void doDeleteShape() {
 		if (actShapeIndex > -1)
 			model.deleteShape(actShapeIndex);
+		actShapeIndex = -1;
+		activeShape = null;
+		view.update(null, new Object());
 	}
 
 	@Override
@@ -534,6 +538,7 @@ public class Controller implements CS355Controller {
 	public void doMoveForward() {
 		if (actShapeIndex > -1 && activeShape != null); {
 			model.moveForward(actShapeIndex);
+			actShapeIndex += actShapeIndex < model.getNumShapes()-1 ? 1 :0;
 		}
 	}
 
@@ -541,6 +546,7 @@ public class Controller implements CS355Controller {
 	public void doMoveBackward() {
 		if (actShapeIndex > -1 && activeShape != null); {
 			model.moveBackward(actShapeIndex);
+			actShapeIndex -= actShapeIndex > 0 ? 1 :0;
 		}
 	}
 
@@ -548,6 +554,7 @@ public class Controller implements CS355Controller {
 	public void doSendToFront() {
 		if (actShapeIndex > -1 && activeShape != null); {
 			model.moveToFront(actShapeIndex);
+			actShapeIndex = model.getNumShapes()-1;actShapeIndex += actShapeIndex < model.getNumShapes()-1 ? 1 :0;
 		}
 	}
 
@@ -555,6 +562,7 @@ public class Controller implements CS355Controller {
 	public void doSendtoBack() {
 		if (actShapeIndex > -1 && activeShape != null); {
 			model.movetoBack(actShapeIndex);
+			actShapeIndex = 0;
 		}
 	}
 	

@@ -157,5 +157,9 @@ public class Model extends CS355Drawing {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public int getNumShapes() {
+		return shapes.size();
+	}
 
 }
